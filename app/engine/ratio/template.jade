@@ -7,6 +7,7 @@
       - for (var i = 1; i < (ratio.quantity+1); i++)
         .ratio_title Ratio Slider #{i}
         .ratio 
-          .ratio_bar
-        .ratio_value 33
-          span!= ratio.suffix
+          .ratio_bar_container
+            .ratio_bar
+          .ratio_value 
+            p.text-right.ratio_value_amount

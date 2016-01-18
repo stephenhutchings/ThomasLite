@@ -13,16 +13,39 @@ class RatioView extends SlideView
     @setEl @el.querySelectorAll(".ratio"), "bars"
     @setEl @el.querySelectorAll(".ratio_bar"), "bar_fills"
 
+    # set every bar to an equal value based on number of bars
+    @equalizeBars()
     @createDraggy()
 
-  # Create a new "draggy" with radius, and listen to it's drag and drop events.
+  # before the user can drag each bar, set each bar's value to 100%/# of bars
+  equalizeBars: ->
+    barCount = @getEl("bars").length
+    barDecimal = 1 / barCount
+    barPercent = Math.floor(barDecimal * 100)
+    console.log(barPercent)
+
+    for el, i in @getEl("bars")
+      bar = el.querySelector(".ratio_bar")
+
+      @transformEl bar,
+        scale: "#{barDecimal}, 1"
+
+      value = el.querySelector(".ratio_value_amount")
+      value.innerHTML = barPercent + "%"
+
+
+
+
+  # Create a "draggies" array of each "draggy" ratio bar
   createDraggy: ->
     @draggies = []
 
+    # for every "bars" element on the page, as "i"
     for el, i in @getEl("bars")
       draggy = new Draggy
         el: el
         isParent: true
+        # set the x parameters as the left and right sides of "i"
         minX: 0
         maxX: el.offsetWidth
 
@@ -31,22 +54,23 @@ class RatioView extends SlideView
 
       @draggies[i] = draggy
 
-  # The user has dragged their finger on the screen. "isInitial" is true for
-  # the first touch only.
   onDrag: (draggy, isInitial) ->
+    # set "bar" by treating the draggy as an element then query selecting
+    # the ".ratio_bar" within it
     bar = draggy.el.querySelector(".ratio_bar")
     x = draggy.x
     percentage = Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0)
 
+    # apply a transform to "bar," setting the x-scale to the percentage value
     @transformEl bar,
       scale: "#{percentage}, 1"
 
-    # @setBarLabel(percentage)
+    @setBarLabel(percentage, draggy)
 
-  # setBarLabel: (percentage) ->
-  #   console.log "#{Math.round(percentage * 100)}%"
-  #   value = draggy.el.querySelector
-
+  setBarLabel: (percentage, draggy) ->
+    percentage = Math.round(percentage * 100)
+    value = draggy.el.querySelector(".ratio_value_amount")
+    value.innerHTML = percentage + "%"
 
   events: ->
     "iostap .btn-next": "next"

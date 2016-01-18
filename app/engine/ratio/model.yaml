@@ -9,7 +9,7 @@ model:
   ratio:
     quantity:
       type: number
-      default: 3
+      default: 2
       display: Number of Sliders
 
     min:
