@@ -2,9 +2,41 @@ title: ratio
 display: Ratio
 category: Numbers
 model:
+  title:
+    type: html
+    default: Choose the correct ratios
+
+  ratio:
+    quantity:
+      type: number
+      default: 3
+      display: Number of Sliders
+
+    min:
+      type: number
+      default: 0
+      display: Min. Value
+
+    max:
+      type: number
+      default: 100
+      display: Max. Value
+
+    prefix:
+      type: text
+      default: ""
+
+    suffix:
+      type: text
+      default: "%"
+
+    increments:
+      type: "number"
+      default: 1
+
   answer:
     text:
-      type: html
+      type: html 
       default: ""
       display: Answer Text
 
@@ -26,6 +58,3 @@ model:
       type: text
       default: ""
       display: Core Message
-
-examples:
-  -

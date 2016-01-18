@@ -1,1 +1,12 @@
-.content
+.block-xl.content-lg-fill.content-sm-ver
+  .row.content-lg-fill
+    .col-lg-6.col-sm-12.content-lg-ver
+      h1.text-lg-right.text-sm-center.fade-in!= title
+
+    .col-lg-6.col-sm-12.content-lg-ver
+      - for (var i = 1; i < (ratio.quantity+1); i++)
+        .ratio_title Ratio Slider #{i}
+        .ratio 
+          .ratio_bar
+        .ratio_value 33
+          span!= ratio.suffix
