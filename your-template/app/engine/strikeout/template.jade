@@ -1,0 +1,20 @@
+.full-screen.strikeout-canvas-container
+  canvas.strikeout-canvas
+
+.block-hor-xl.content-lg-fill.content-sm-ver.text-center.strikeout-words
+  .content-lg-ver
+    h1.fade-in
+      for word, i in components
+        .word(
+          data-replaces=word.incorrect && word.replaces
+          class=word.incorrect && "word-incorrect"
+        )
+          div(class=word.klass)
+            != word.incorrect || word.replaces
+
+    h3!= subtitle
+
+.slide-footer.slide-up
+  .slide-footer-prompt!= prompt
+  .slide-footer-touched
+    .btn.btn-muted.btn-done OK, I'm done

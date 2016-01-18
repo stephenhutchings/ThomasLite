@@ -1,0 +1,87 @@
+# Name of the template
+title: pie-chart
+
+# Display name of the template
+display: Pie Chart
+
+# The type of slide [Content, Game, Multiple Choice, Numbers, Relationships]
+category: Numbers
+
+# A description of the model data
+model:
+  title:
+    type: text
+    default: Ask a question
+
+  pie:
+    min:
+      type: number
+      default: 0
+      display: Min. Value
+
+    max:
+      type: number
+      default: 100
+      display: Max. Value
+
+    prefix:
+      type: text
+      default: ""
+
+    suffix:
+      type: text
+      default: "%"
+
+    increment:
+      type: number
+      default: 1
+
+  answer:
+    text:
+      type: html
+      default: ""
+      display: Answer Text
+
+    value:
+      type: number
+      default: 5
+      display: Correct Value
+
+    correct:
+      type: text
+      default: That's correct!
+      display: Correct Reinforcement
+
+    incorrect:
+      type: text
+      default: Not quite...
+      display: Incorrect Reinforcement
+
+    takeaway:
+      type: text
+      default: ""
+      display: Core Message
+
+  prompt:
+    type: text
+    default: Drag to set the correct value
+
+# A list of predefined examples
+# This can be useful when testing different inputs
+examples:
+  -
+    title: What percentage of the market belongs to the product?
+    pie:
+      min: 0
+      max: 100
+      labels: 4
+      prefix: ""
+      suffix: "%"
+      increment: 1
+
+    answer:
+      value: 26
+      takeaway: The product holds 26% market share
+      text: >
+        With so much market share held by this product, it's obviously the only
+        choice for consumers in the know.

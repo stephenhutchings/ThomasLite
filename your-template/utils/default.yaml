@@ -1,0 +1,13 @@
+# Default configuration
+title: Thomas Lite
+config:
+  colors:
+    background: "#46b4e9"
+    text: "#fff"
+
+  pagination: false
+  indicator: true
+  pageNumbers: true
+  locked: true
+
+debug: true

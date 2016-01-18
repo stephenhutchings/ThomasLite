@@ -1,0 +1,15 @@
+//- 
+  All text inputs are parsed as Markdown by the CMS, so the it's necessary to
+  use `!=` to insert content as HTML.
+
+.content-ver.text-center
+  .block-lg
+    h1.slide-up!= title
+    h2.slide-up.text-bold.delay-1!= subtitle
+
+  .block-lg
+    .btn.btn-solid.btn-next.slide-up!= buttonText
+
+.slide-footer.slide-up.delay-4
+  if exitButton
+    .btn.btn-muted.btn-exit Close Lesson

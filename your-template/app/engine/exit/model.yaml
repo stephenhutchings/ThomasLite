@@ -1,0 +1,16 @@
+title: exit
+display: Exit Lesson
+category: Exit
+model:
+  title:
+    type: text
+    default: That's it!
+
+  content:
+    type: text
+    default: Nice work. You've completed this lesson.
+
+  buttonText:
+    type: text
+    default: Exit Lesson
+    display: Button CTA

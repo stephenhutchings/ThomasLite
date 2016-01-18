@@ -4,8 +4,6 @@
 
 Generate a new template using [scaffolt].
 
-[scaffolt]: https://github.com/paulmillr/scaffolt
-
 ```bash
 scaffolt template your-template-name
 ```
@@ -18,6 +16,7 @@ This will create:
 
 You'll need to add a reference to the `sass` file in `app.sass` to have it added to your deck.
 
+[scaffolt]: https://github.com/paulmillr/scaffolt
 
 #### Engine Models
 

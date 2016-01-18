@@ -1,0 +1,19 @@
+{
+  "files": [{
+    "from": "view.coffee.hbs",
+    "to": "app/engine/{{name}}/view.coffee"
+  },
+  {
+    "from": "template.jade.hbs",
+    "to": "app/engine/{{name}}/template.jade"
+  },
+  {
+    "from": "_style.sass.hbs",
+    "to": "app/engine/{{name}}/_style.sass"
+  },
+  {
+    "from": "model.yaml.hbs",
+    "to": "app/engine/{{name}}/model.yaml"
+  }],
+    "description": "Generate a sass, jade and coffee file for a slide template in the presentation. Sass files need to be added to all.sass."
+}

@@ -1,0 +1,30 @@
+.slide-strikeout
+  .strikeout-canvas
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+  .strikeout-canvas-container
+    z-index: 0
+
+  .strikeout-words
+    pointer-events: none
+
+  .word
+    display: inline-block
+    padding: 0 0.1em
+    border-radius: 4px
+    transition: all 300ms
+
+    &.active
+      background-color: #fff
+      color: #222
+      animation: rubber 300ms 1 forwards
+
+  .word-incorrect
+    &.active
+      background-color: #222
+      color: #fff
+      animation: none

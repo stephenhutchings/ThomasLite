@@ -1,0 +1,38 @@
+# Name of the template
+title: title
+
+# Display name of the template
+display: Title Slide
+
+# The type of slide [Content, Game, Multiple Choice, Numbers, Relationships]
+category: Content
+
+# A description of the model data
+model:
+  title:
+    type: text
+    default: A title slide
+
+  subtitle:
+    type: text
+    default: An optional subtitle
+
+  buttonText:
+    type: text
+    display: Button text
+    default: "OK, let's go!"
+
+  exitButton:
+    type: boolean
+    default: false
+    display: Exit Button
+
+    # A help attribute can be used to provide extra help to CMS users
+    help: Give users the option to leave the lesson from this slide.
+
+examples:
+  -
+    title: Welcome to Thomas Lite
+    subtitle: >
+      This is an example of a Thomas slide.<br>
+      Check out the source to see how it all works.

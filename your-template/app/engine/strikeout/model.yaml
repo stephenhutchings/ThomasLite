@@ -1,0 +1,76 @@
+# Name of the template
+title: strikeout
+
+# Display name of the template
+display: Strike-out
+
+# The type of slide [Content, Game, Multiple Choice, Numbers, Relationships]
+category: Concepts
+
+# A description of the model data
+model:
+  title:
+    type: text
+    default: >
+      Cross out the incorrect words from this sentence to make it correct.
+
+  subtitle:
+    type: text
+
+  words:
+    min: 1
+    max: 8
+    type:
+      -
+        incorrect:
+          type: text
+        replaces:
+          type: text
+
+  answer:
+    text:
+      type: html
+      default: ""
+      display: Answer Text
+
+    correct:
+      type: text
+      default: That's correct!
+      display: Correct Reinforcement
+
+    incorrect:
+      type: text
+      default: Not quite...
+      display: Incorrect Reinforcement
+
+    takeaway:
+      type: text
+      default: ""
+      display: Core Message
+
+  prompt:
+    type: text
+    default: Cross out the incorrect words
+
+
+# A list of predefined examples
+# This can be useful when testing different inputs
+examples:
+  -
+    title: >
+      Cross out the incorrect words from this sentence to make it correct
+    subtitle: ""
+    prompt: Cross out the incorrect words
+    words:
+      -
+        incorrect: impudence
+        replaces: incorrect words
+      -
+        incorrect: elephant
+        replaces: sentence
+      -
+        incorrect: splendid
+        replaces: correct
+
+    answer:
+      text: You can use strike-out to get people thinking about your message.

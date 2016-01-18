@@ -1,0 +1,17 @@
+SlideView = require("views/slide")
+
+class {{#camelize}}{{name}}{{/camelize}}View extends SlideView
+  template: require("./template")
+
+  events: ->
+    "iostap .btn-next": "next"
+    "iostap .btn-exit": "exit"
+
+  initialize: ->
+  show: ->
+  hide: ->
+  beforeShow: ->
+  beforeHide: ->
+  afterShow:  ->
+
+module.exports = {{#camelize}}{{name}}{{/camelize}}View

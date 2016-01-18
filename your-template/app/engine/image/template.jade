@@ -1,0 +1,14 @@
+.img
+
+if caption && (caption.title || caption.content)
+  .text-center
+    h4.caption-hint!= prompt
+    .caption.block-lg.text-md(style="background-color: #{backgroundColor};")
+      if caption.title
+        p: strong!= caption.title
+
+      if caption.content
+        != caption.content
+
+.slide-footer.slide-up
+  .btn.btn-muted.btn-done Continue

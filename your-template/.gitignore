@@ -1,0 +1,12 @@
+build/
+docs/src/
+
+bower_components
+node_modules
+
+*.sassc
+*.swp
+*.swo
+.DS_Store
+
+*.log

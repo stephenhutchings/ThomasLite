@@ -1,0 +1,68 @@
+# Name of the template
+title: image
+
+# Display name of the template
+display: Image Slide
+
+# The type of slide [Content, Game, Multiple Choice, Numbers, Relationships]
+category: Content
+
+# A description of the model data
+model:
+  url:
+    type: image
+    default: ""
+    display: Image
+
+  size:
+    type: text
+    default: 80%
+    enum:
+      [ initial, cover, contain,
+        10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% ]
+
+  caption:
+    title:
+      type: text
+      default: ""
+
+    content:
+      type: text
+      default: ""
+
+    background:
+      type: text
+      default: ""
+      display: Background color
+      help: >
+        This color (eg. orange, #f90, rgb(255,160,0)) will be used for the
+        caption's background, or in lightbox mode the background of the entire
+        screen.
+
+  prompt:
+    type: text
+    default:  Tap the image for more information
+
+  lightbox:
+    type: boolean
+    default: true
+    help: >
+      Focus on the image by hiding other parts of the interface. If a
+      background color is set, that color will be used.
+
+# A list of predefined examples
+# This can be useful when testing different inputs
+examples:
+  -
+    url: img/templates/image/example.png
+    size: 80%
+    lightbox: false
+    caption:
+      title: Example Image
+      content: >
+        An example image slide with size and caption. Size should be set to
+        cover, contain or a percentage eg. 80%
+
+  -
+    url: img/templates/image/example.png
+    size: cover

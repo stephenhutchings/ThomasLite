@@ -1,0 +1,53 @@
+.slide-pie-chart
+  .pie
+    position: relative
+    margin: 0 auto
+    width: 18em
+    height: 18em
+
+    &:after
+      content: ""
+      position: absolute
+      width: 100%
+      height: 100%
+      padding: 2em
+      left: -2em
+      top: -2em
+
+  .pie-ring-svg
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    border-radius: 50%
+
+  .pie-ring
+    fill: transparent
+    stroke: rgba(0, 0, 0, 0.3)
+    stroke-width: 8em
+    transform: translate3d(0, 0, 0) rotate(-90deg)
+    transform-origin: center center
+
+  .pie-ring-answer
+    stroke: transparent
+
+  .pie.active .pie-ring
+    transition: none
+
+  .pie-ring-value
+    width: 3em
+
+  &.state-complete
+    .pie-ring-input
+      stroke: rgba(0, 0, 0, 0.2)
+
+    .pie-ring-answer
+      stroke: rgba(0, 0, 0, 0.2)
+
+  @media (max-width: $screen-sm-max)
+    .pie
+      font-size: 10px
+
+    .pie-label-text
+      font-size: 14px

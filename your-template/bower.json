@@ -1,0 +1,18 @@
+{
+  "name": "Thomas Lite",
+  "version": "0.0.0",
+  "authors": [
+    "stephenhutchings <stephen@creativelicence.com.au>"
+  ],
+  "license": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

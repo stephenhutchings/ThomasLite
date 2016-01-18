@@ -1,0 +1,65 @@
+.slide-image
+  .img
+    width: 100%
+    height: 100%
+    opacity: 0
+    background-position: center
+    background-repeat: no-repeat
+    transition: all 300ms
+    transform: scale(0.95) translateZ(0)
+
+    &.is-loaded
+      opacity: 0.9
+
+  .caption-hint
+    position: absolute
+    bottom: 1em
+    left: 0
+    right: 0
+    transition: opacity 300ms
+
+  .caption
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    color: inherit
+    pointer-events: none
+    z-index: 1
+    opacity: 0
+    transform: translate3d(0, 100%, 0)
+    transition: transform 300ms, opacity 300ms
+
+  .slide-footer
+    border-top: none
+    margin-top: 0
+    z-index: 10
+    transform: translate3d(0, 0, 0)
+
+  &.is-lightbox
+    color: #fff
+
+    .caption-hint
+      top: -3em
+      bottom: auto
+
+    .caption
+      padding-bottom: 0.5em
+
+  &.has-background
+    color: #fff
+
+  &.show-caption
+    .caption
+      transform: translate3d(0, 0, 0)
+      opacity: 1
+
+    .caption-hint
+      opacity: 0
+
+  &.active
+    .img
+      transform: scale(1) translateZ(0)
+
+      &.is-loaded
+        opacity: 1
