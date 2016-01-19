@@ -14,31 +14,13 @@ class RatioView extends SlideView
     @setEl @el.querySelectorAll(".ratio_bar"), "bar_fills"
 
     # set every bar to an equal value based on number of bars
-    @equalizeBars()
     @createDraggy()
-
-  # before the user can drag each bar, set each bar's value to 100%/# of bars
-  equalizeBars: ->
-    barCount = @getEl("bars").length
-    barDecimal = 1 / barCount
-    barPercent = Math.floor(barDecimal * 100)
-    console.log(barPercent)
-
-    for el, i in @getEl("bars")
-      bar = el.querySelector(".ratio_bar")
-
-      @transformEl bar,
-        scale: "#{barDecimal}, 1"
-
-      value = el.querySelector(".ratio_value_amount")
-      value.innerHTML = barPercent + "%"
-
-
-
 
   # Create a "draggies" array of each "draggy" ratio bar
   createDraggy: ->
     @draggies = []
+    totalWidth = @getEl("bars").item(0).offsetWidth
+    initialX   = totalWidth * 1 / @getEl("bars").length
 
     # for every "bars" element on the page, as "i"
     for el, i in @getEl("bars")
@@ -47,30 +29,75 @@ class RatioView extends SlideView
         isParent: true
         # set the x parameters as the left and right sides of "i"
         minX: 0
-        maxX: el.offsetWidth
+        maxX: totalWidth
 
       @listenTo draggy, "drag", @onDrag
       @listenTo draggy, "drop", @onDrop
 
+      draggy.reset x: initialX, y: 0
+
       @draggies[i] = draggy
 
   onDrag: (draggy, isInitial) ->
-    # set "bar" by treating the draggy as an element then query selecting
-    # the ".ratio_bar" within it
+
+    if @options.data.ratio.quantity == 1
+      @updateBar(draggy)
+    else if @options.data.ratio.quantity == 2
+      @updateBar(draggy)
+      @barReactZeroSumSimple(draggy.x / draggy.offset.width, draggy)
+    else if @options.data.ratio.quantity > 2
+      @updateBar(draggy)
+      @barReactZeroSumComplex(draggy.x / draggy.offset.width, draggy)
+
+
+  onDrop: (draggy, isReset) ->
+    if isReset
+      @updateBar(draggy)
+
+  updateBar: (draggy) ->
+    barDecimal = Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0)
+    barPercent = Math.floor(barDecimal * 100)
+    
     bar = draggy.el.querySelector(".ratio_bar")
-    x = draggy.x
-    percentage = Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0)
+    value = draggy.el.querySelector(".ratio_value_amount")
 
-    # apply a transform to "bar," setting the x-scale to the percentage value
     @transformEl bar,
-      scale: "#{percentage}, 1"
+      scale: "#{barDecimal}, 1"
 
-    @setBarLabel(percentage, draggy)
+    value.innerHTML = barPercent + "%"
 
   setBarLabel: (percentage, draggy) ->
     percentage = Math.round(percentage * 100)
     value = draggy.el.querySelector(".ratio_value_amount")
     value.innerHTML = percentage + "%"
+
+  barReactZeroSumSimple: (percentage, draggy) ->
+    draggyPercent = percentage
+    otherDraggies = _.filter(@draggies, (d) -> d isnt draggy)
+
+    for otherDraggy, i in otherDraggies
+      x = (1 - percentage) * otherDraggy.offset.width
+      otherDraggy.reset x: x, y: 0
+
+  barReactZeroSumComplex: (percentage, draggy) ->
+    draggyPercent = percentage
+    otherDraggies = _.filter(@draggies, (d) -> d isnt draggy)
+    totalDecimal = 0
+    
+    for draggy, i in @draggies
+      draggyDecimal = Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0)
+      totalDecimal += draggyDecimal
+
+    if totalDecimal > 1
+      for otherDraggy, i in otherDraggies
+        x = otherDraggy.x - (((totalDecimal - 1) / otherDraggies.length) * otherDraggy.offset.width)
+        otherDraggy.reset x: x, y: 0
+
+    else if totalDecimal < 1
+      for otherDraggy, i in otherDraggies
+        x = otherDraggy.x + (((1 - totalDecimal) / otherDraggies.length) * otherDraggy.offset.width)
+        otherDraggy.reset x: x, y: 0
+
 
   events: ->
     "iostap .btn-next": "next"
