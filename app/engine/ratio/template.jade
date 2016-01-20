@@ -6,12 +6,12 @@
     .col-lg-6.col-sm-12.content-lg-ver
       - for (var i = 1; i < (ratio.quantity+1); i++)
         .block-md
-          .ratio_title.text-lg Ratio Slider #{i}
+          .ratio-title.text-lg= bar.title
           .ratio 
-            .ratio_bar_container
-              .ratio_bar
-            .ratio_value 
-              .text-lg.text-right.ratio_value_amount
+            .ratio-bar-container
+              .ratio-bar
+            .ratio-value 
+              .text-lg.text-right.ratio-value-amount
 
 .slide-footer.slide-up
   .slide-footer-prompt!= prompt

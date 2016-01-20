@@ -11,7 +11,7 @@ class RatioView extends SlideView
     return if @draggy
 
     @setEl @el.querySelectorAll(".ratio"), "bars"
-    @setEl @el.querySelectorAll(".ratio_bar"), "bar_fills"
+    @setEl @el.querySelectorAll(".ratio-bar"), "bar-fills"
 
     # set every bar to an equal value based on number of bars
     @createDraggy()
@@ -58,9 +58,9 @@ class RatioView extends SlideView
   updateBar: (draggy) ->
     barDecimal = Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0)
     barPercent = Math.round(barDecimal * 100)
-    
-    bar = draggy.el.querySelector(".ratio_bar")
-    value = draggy.el.querySelector(".ratio_value_amount")
+
+    bar = draggy.el.querySelector(".ratio-bar")
+    value = draggy.el.querySelector(".ratio-value-amount")
 
     @transformEl bar,
       scale: "#{barDecimal}, 1"
@@ -69,7 +69,7 @@ class RatioView extends SlideView
 
   setBarLabel: (percentage, draggy) ->
     percentage = Math.round(percentage * 100)
-    value = draggy.el.querySelector(".ratio_value_amount")
+    value = draggy.el.querySelector(".ratio-value-amount")
     value.innerHTML = percentage + "%"
 
   barReactZeroSumSimple: (percentage, draggy) ->
@@ -84,7 +84,7 @@ class RatioView extends SlideView
     draggyPercent = percentage
     otherDraggies = _.filter(@draggies, (d) -> d isnt draggy)
     totalDecimal = 0
-    
+
     for draggy, i in @draggies
       draggyDecimal = Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0)
       totalDecimal += draggyDecimal
