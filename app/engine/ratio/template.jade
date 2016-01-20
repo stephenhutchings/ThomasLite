@@ -5,9 +5,15 @@
 
     .col-lg-6.col-sm-12.content-lg-ver
       - for (var i = 1; i < (ratio.quantity+1); i++)
-        .ratio_title Ratio Slider #{i}
-        .ratio 
-          .ratio_bar_container
-            .ratio_bar
-          .ratio_value 
-            p.text-right.ratio_value_amount
+        .block-md
+          .ratio_title.text-lg Ratio Slider #{i}
+          .ratio 
+            .ratio_bar_container
+              .ratio_bar
+            .ratio_value 
+              .text-lg.text-right.ratio_value_amount
+
+.slide-footer.slide-up
+  .slide-footer-prompt!= prompt
+  .slide-footer-touched
+    .btn.btn-muted.btn-done OK, I'm done

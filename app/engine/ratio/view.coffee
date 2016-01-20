@@ -39,6 +39,7 @@ class RatioView extends SlideView
       @draggies[i] = draggy
 
   onDrag: (draggy, isInitial) ->
+    @setState("touched")
 
     if @options.data.ratio.quantity == 1
       @updateBar(draggy)
@@ -56,7 +57,7 @@ class RatioView extends SlideView
 
   updateBar: (draggy) ->
     barDecimal = Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0)
-    barPercent = Math.floor(barDecimal * 100)
+    barPercent = Math.round(barDecimal * 100)
     
     bar = draggy.el.querySelector(".ratio_bar")
     value = draggy.el.querySelector(".ratio_value_amount")
