@@ -4,7 +4,7 @@
       h1.text-lg-right.text-sm-center.fade-in!= title
 
     .col-lg-6.col-sm-12.content-lg-ver
-      - for (var i = 1; i < (ratio.quantity+1); i++)
+      for bar in ratio.bars
         .block-md
           .ratio-title.text-lg= bar.title
           .ratio 

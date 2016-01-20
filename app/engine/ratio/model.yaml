@@ -7,10 +7,13 @@ model:
     default: Choose the correct ratios
 
   ratio:
-    quantity:
-      type: number
-      default: 2
-      display: Number of Sliders
+    bars:
+      min: 2
+      max: 3
+      type:
+        -
+          title:
+            type: text
 
     min:
       type: number
@@ -36,7 +39,7 @@ model:
 
   answer:
     text:
-      type: html 
+      type: html
       default: ""
       display: Answer Text
 
@@ -62,3 +65,19 @@ model:
   prompt:
     type: text
     default: Drag to set the correct value
+
+examples:
+  -
+    ratio:
+      bars:
+        - title: Bar 1
+        - title: Bar 2
+
+  -
+    ratio:
+      suffix: " cats"
+      max: 10
+      bars:
+        - title: Bar 1
+        - title: Bar 2
+        - title: Bar 3
