@@ -1,17 +1,17 @@
 .block-xl.content-lg-fill.content-sm-ver
   .row.content-lg-fill
     .col-lg-6.col-sm-12.content-lg-ver
-      h1.text-lg-right.text-sm-center.fade-in!= title
+      h1.text-lg-right.text-sm-center.fade-in.tight!= title
 
     .col-lg-6.col-sm-12.content-lg-ver
       for bar in ratio.bars
         .block-md
-          .ratio-title.text-lg= bar.title
+          .ratio-title.block-ver-sm.text-lg= bar.title
           .ratio 
             .ratio-bar-container
               .ratio-bar
             .ratio-value 
-              .text-lg.text-right.ratio-value-amount
+              .text-lg.text-right.ratio-value-amount &hellip;
 
 .slide-footer.slide-up
   .slide-footer-prompt!= prompt
