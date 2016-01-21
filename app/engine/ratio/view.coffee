@@ -51,7 +51,7 @@ class RatioView extends SlideView
     @currentDraggy = draggy
     @setState("touched")
     @renderDraggy(draggy, isInitial)
-    @updateDraggies(draggy)
+    @updateDraggies(draggy, isInitial)
 
   onDrop: (draggy, isReset) ->
     if isReset
@@ -90,7 +90,7 @@ class RatioView extends SlideView
   # 3. For each draggy, distribute the remainder based on it's previous
   #    proportion of the current total.
   # 4. Reset the draggy based on this new value.
-  updateDraggies: (draggy) ->
+  updateDraggies: (draggy, transition) ->
     remainder     = 1 - @getPercent(draggy)
     otherDraggies = _.filter(@draggies, (d) -> d isnt draggy)
     currentTotal  = _.reduce otherDraggies, ((m, d) => m + @getPercent(d)), 0
@@ -101,7 +101,7 @@ class RatioView extends SlideView
       x       = percent * otherDraggy.offset.width
 
       otherDraggy.reset { x }, silent: true
-      @renderDraggy(otherDraggy)
+      @renderDraggy(otherDraggy, transition)
 
   # When we finish dragging, we need to ensure the subtotal value from each
   # bar matches the expected total. To acheive this, we simply snap each
