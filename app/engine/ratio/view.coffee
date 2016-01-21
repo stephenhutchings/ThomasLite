@@ -27,8 +27,8 @@ class RatioView extends SlideView
   # the bar and value element of each draggy in it's options, for quick access
   # later on.
   createDraggies: ->
-    @draggies = []
-    totalWidth = @getEl("bars").item(0).offsetWidth
+    @draggies  = []
+    totalWidth = @getEl("bars").item(0).offsetWidth or @serialize().width
     initialX   = totalWidth / @getEl("bars").length
 
     for el, i in @getEl("bars")
