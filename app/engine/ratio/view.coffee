@@ -17,7 +17,7 @@ class RatioView extends SlideView
     @createDraggies()
 
   onRefresh: ->
-    for draggy in @draggies
+    for draggy in @draggies or []
       draggy.undelegateEvents()
 
     @draggies = null
@@ -29,7 +29,7 @@ class RatioView extends SlideView
   createDraggies: ->
     @draggies = []
     totalWidth = @getEl("bars").item(0).offsetWidth
-    initialX   = totalWidth * 1 / @getEl("bars").length
+    initialX   = totalWidth / @getEl("bars").length
 
     for el, i in @getEl("bars")
       draggy = new Draggy
