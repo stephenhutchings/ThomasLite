@@ -9,7 +9,7 @@ model:
   ratio:
     bars:
       min: 2
-      max: 3
+      max: 4
       type:
         -
           title:
