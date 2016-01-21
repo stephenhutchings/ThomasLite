@@ -15,15 +15,10 @@ model:
           title:
             type: text
 
-    min:
-      type: number
-      default: 0
-      display: Min. Value
-
-    max:
+    total:
       type: number
       default: 100
-      display: Max. Value
+      display: Total Value of All Bars
 
     prefix:
       type: text
@@ -33,7 +28,7 @@ model:
       type: text
       default: "%"
 
-    increments:
+    increment:
       type: "number"
       default: 1
 
@@ -69,15 +64,30 @@ model:
 examples:
   -
     ratio:
+      increment: 5
       bars:
-        - title: Bar 1
-        - title: Bar 2
+        -
+          title: One Quarter
+          value: 25
+        -
+          title: Three Quarters
+          value: 75
 
   -
+    title: How many rooms does the house have?
     ratio:
-      suffix: " cats"
-      max: 10
+      suffix: " rooms"
+      total: 8
       bars:
-        - title: Bar 1
-        - title: Bar 2
-        - title: Bar 3
+        -
+          title: Bedrooms
+          value: 4
+        -
+          title: Bathrooms
+          value: 2
+        -
+          title: Kitchens
+          value: 1
+        -
+          title: Studies
+          value: 1
