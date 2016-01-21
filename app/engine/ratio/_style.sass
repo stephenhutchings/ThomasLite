@@ -1,26 +1,29 @@
 .slide-ratio
-  .ratio
-    .ratio-bar-container
-      background: #1B4154
+  .ratio-bar-container
+    height: 20px
+    border: 3px solid rgba(#000, 0.4)
+    overflow: hidden
+    position: relative
+    border-bottom-right-radius: 0px
+    z-index: 1
+    background-color: rgba(#000, 0.5)
+    background-clip: padding-box
+
+    .ratio-bar
       height: 20px
-      border: 2px solid #2D6D8C
-      border-radius: 4px
-      overflow: hidden
-      position: relative
-      z-index: 1
-      .ratio-bar
-        background: #CCC
-        height: 20px
-        width: 100%
-        transform-origin: left center
-    .ratio-value
-      display: block
-      text-align: right
-      position: relative
-      z-index: 0
-      .ratio-value-amount
-        background: #2D6D8C
-        display: inline-block
-        border-radius: 0 0 4px 4px
-        padding: 6px 4px 2px
-        margin-top: -4px
+      background-color: #fafafa
+      border-radius: 2px
+      width: 100%
+      transform-origin: left center
+
+  .ratio-value
+    display: block
+    text-align: right
+    position: relative
+    z-index: 0
+
+  .ratio-value-amount
+    display: inline-block
+    border-radius: 0 0 4px 4px
+    padding: 2px 4px
+    background-color: rgba(#000, 0.4)
