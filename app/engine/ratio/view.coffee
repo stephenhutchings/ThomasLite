@@ -28,11 +28,16 @@ class RatioView extends SlideView
   onResize: ->
     return unless @draggies?.length > 0
 
+    if @currentState.state is "prompt"
+      totalWidth = @getEl("bars").item(0).offsetWidth
+      initialX   = totalWidth / @getEl("bars").length
+
     window.clearTimeout @timeout
     @timeout = window.setTimeout (=>
       for draggy, i in @draggies
         draggy.getOffset()
-        draggy.options.maxX = draggy.offset.width
+        draggy.options.maxX = draggy.offset.totalWidth
+        draggy.reset(x: initialX) if initialX
     ), 600
 
   # Ensure "total" and "increment" are rational numbers.
