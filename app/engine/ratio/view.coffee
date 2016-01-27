@@ -74,6 +74,7 @@ class RatioView extends SlideView
   # To ensure that "zeroed-out" draggies can still contribute to the overall
   # distribution, we ensure that it is above zero.
   getPercent: (draggy) ->
+    console.log draggy.x, draggy.offset, draggy.el.offsetWidth
     Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0.0001)
 
   getLabel: (draggy) ->
