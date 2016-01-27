@@ -13,6 +13,8 @@ class RatioView extends SlideView
   afterShow: ->
     return if @draggies
 
+    @listenTo this, "resize", @onResize
+
     @setEl @el.querySelectorAll(".ratio"), "bars"
     @createDraggies()
 
@@ -22,6 +24,16 @@ class RatioView extends SlideView
 
     @draggies = null
     @afterShow()
+
+  onResize: ->
+    return unless @draggies?.length > 0
+
+    window.clearTimeout @timeout
+    @timeout = window.setTimeout (=>
+      for draggy, i in @draggies
+        draggy.getOffset()
+        draggy.options.maxX = draggy.offset.width
+    ), 600
 
   # Ensure "total" and "increment" are rational numbers.
   serialize: ->
