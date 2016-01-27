@@ -40,10 +40,6 @@ model:
       default: ""
       display: Answer Text
 
-    value:
-      type: number
-      display: Correct Value
-
     correct:
       type: text
       default: That's correct!
