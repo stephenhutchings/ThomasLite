@@ -23,6 +23,17 @@ class RatioView extends SlideView
     @draggies = null
     @afterShow()
 
+  # Ensure "total" and "increment" are rational numbers.
+  serialize: ->
+    data = super
+
+    { total, increment } = data.ratio
+
+    data.ratio.total     = parseFloat(total, 10) or 100
+    data.ratio.increment = parseFloat(total, 10) or 1
+
+    data
+
   # Create a "draggies" array of each "draggy" ratio bar. Save a reference to
   # the bar and value element of each draggy in it's options, for quick access
   # later on.
