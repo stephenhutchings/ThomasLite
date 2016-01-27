@@ -39,25 +39,24 @@ class RatioView extends SlideView
   # the bar and value element of each draggy in it's options, for quick access
   # later on.
   createDraggies: ->
-    @draggies  = []
     totalWidth = @getEl("bars").item(0).offsetWidth or @serialize().width
     initialX   = totalWidth / @getEl("bars").length
 
-    for el, i in @getEl("bars")
-      draggy = new Draggy
-        el: el
-        minX: 0
-        maxX: totalWidth
-        isParent: true
-        barElement: el.querySelector(".ratio-bar")
-        valElement: el.querySelector(".ratio-value-amount")
+    @draggies =
+      for el in @getEl("bars")
+        draggy = new Draggy
+          el: el
+          minX: 0
+          maxX: totalWidth
+          isParent: true
+          barElement: el.querySelector(".ratio-bar")
+          valElement: el.querySelector(".ratio-value-amount")
 
-      @listenTo draggy, "drag", @onDrag
-      @listenTo draggy, "drop", @onDrop
+        @listenTo draggy, "drag", @onDrag
+        @listenTo draggy, "drop", @onDrop
 
-      draggy.reset x: initialX, y: 0
-
-      @draggies[i] = draggy
+        draggy.reset x: initialX, y: 0
+        draggy
 
   onDrag: (draggy, isInitial) ->
     @currentDraggy = draggy
@@ -74,8 +73,7 @@ class RatioView extends SlideView
   # To ensure that "zeroed-out" draggies can still contribute to the overall
   # distribution, we ensure that it is above zero.
   getPercent: (draggy) ->
-    console.log draggy.x, draggy.offset, draggy.el.offsetWidth
-    Math.max(Math.min(draggy.x / draggy.offset.width, 1), 0.0001)
+    Math.max(Math.min((draggy.x / draggy.offset.width) or 0, 1), 0.0001)
 
   getLabel: (draggy) ->
     { prefix, suffix } = @options.data.ratio
