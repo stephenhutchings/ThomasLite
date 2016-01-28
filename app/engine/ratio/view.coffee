@@ -49,6 +49,7 @@ class RatioView extends SlideView
     data.ratio.total     = parseFloat(total, 10) or 100
     data.ratio.increment = parseFloat(increment, 10) or 1
     data.ratio.bars = _.filter data.ratio.bars, (b) -> b.title and b.value
+    data.ratio.independent = true if data.ratio.bars.length is 1
 
     data
 

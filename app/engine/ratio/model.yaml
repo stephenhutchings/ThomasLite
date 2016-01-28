@@ -8,12 +8,12 @@ model:
 
   ratio:
     bars:
-      min: 2
+      min: 1
       max: 4
       type:
         -
           title:
-            type: text
+            type: html
           value:
             type: number
 
@@ -95,3 +95,13 @@ examples:
         -
           title: Studies
           value: 1
+
+  -
+    title: How many planets are there?
+    ratio:
+      suffix: ""
+      total: 10
+      bars:
+        -
+          title: Planets
+          value: 8
