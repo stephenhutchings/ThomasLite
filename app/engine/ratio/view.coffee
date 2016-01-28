@@ -1,5 +1,4 @@
 SlideView = require("views/slide")
-Prefix = require("lib/prefix")
 Draggy = require("views/components/draggy")
 
 class RatioView extends SlideView
