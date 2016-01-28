@@ -157,4 +157,17 @@ class RatioView extends SlideView
       .isEmpty()
       .value()
 
+  showAnswer: ->
+    super
+
+    { bars, total } = @options.data.ratio
+
+    for { value }, i in bars
+      draggy    = @draggies[i]
+      isCorrect = @getValue(draggy) is value
+
+      draggy.el.parentNode.classList.toggle "correct", isCorrect
+      draggy.el.parentNode.classList.toggle "incorrect", not isCorrect
+      draggy.reset x: draggy.offset.width * value / total
+
 module.exports = RatioView
