@@ -79,7 +79,9 @@ class RatioView extends SlideView
     @currentDraggy = draggy
     @setState("touched")
     @renderDraggy(draggy, isInitial)
-    @updateDraggies(draggy, isInitial)
+
+    unless @options.data.ratio.independent
+      @updateDraggies(draggy, isInitial)
 
   onDrop: (draggy, isReset) ->
     if isReset
@@ -142,7 +144,7 @@ class RatioView extends SlideView
       value = @getValue(draggy)
       subtotal += value
 
-      if i is @draggies.length - 1
+      if i is @draggies.length - 1 and not @options.data.ratio.independent
         value -= (subtotal - total)
 
       x = Math.floor(value / total * draggy.offset.width)

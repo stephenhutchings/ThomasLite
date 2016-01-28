@@ -34,6 +34,11 @@ model:
       type: number
       default: 1
 
+    independent:
+      type: boolean
+      default: false
+      display: Allow bars to move freely and total any number
+
   answer:
     text:
       type: html
@@ -76,6 +81,7 @@ examples:
     ratio:
       suffix: " rooms"
       total: 8
+      independent: true
       bars:
         -
           title: Bedrooms
