@@ -8,13 +8,17 @@
     z-index: 1
     background-color: rgba(#000, 0.4)
     background-clip: padding-box
+    clear: both
 
-    .ratio-bar
-      height: 20px
-      background-color: #fafafa
-      border-radius: 2px
-      width: 100%
-      transform-origin: left center
+  .ratio-bar
+    height: 20px
+    background-color: #fafafa
+    border-radius: 2px
+    width: 100%
+    transform-origin: left center
+
+  .ratio-title
+    float: left
 
   .ratio-value
     display: block
@@ -31,6 +35,7 @@
   &.state-complete
     .incorrect .ratio
       opacity: 0.8
+    .incorrect .ratio-title
       animation: rubber 700ms 200ms 1 forwards ease-out
     .correct
       animation: pulse 1200ms 700ms 1 forwards ease-out

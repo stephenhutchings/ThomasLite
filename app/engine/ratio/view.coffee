@@ -172,9 +172,4 @@ class RatioView extends SlideView
       draggy.el.parentNode.classList.toggle "incorrect", not isCorrect
       draggy.reset x: draggy.offset.width * value / total
 
-    window.setTimeout =>
-      for draggy in @draggies
-        draggy.el.parentNode.classList.remove "correct", "incorrect"
-    , 1200
-
 module.exports = RatioView
