@@ -10,6 +10,7 @@ class RatioView extends SlideView
   # If your view has post-rendering logic that requires elements to be visible
   # in order to instantiate them properly, this is the place to do it.
   afterShow: ->
+    console.log "test"
     return if @draggies
 
     @listenTo this, "resize", @onResize
@@ -174,7 +175,8 @@ class RatioView extends SlideView
 
     window.setTimeout =>
       for draggy in @draggies
-        draggy.el.classList.remove "correct", "incorrect"
+        draggy.el.classList.remove "correct"
+        draggy.el.classList.remove "incorrect"
     , 1200
 
 module.exports = RatioView
