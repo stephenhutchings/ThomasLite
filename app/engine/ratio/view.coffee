@@ -57,7 +57,11 @@ class RatioView extends SlideView
   # later on.
   createDraggies: ->
     totalWidth = @getEl("bars").item(0).offsetWidth or @serialize().width
-    initialX   = totalWidth / @getEl("bars").length
+    initialX   =
+      if @options.data.ratio.independent
+        totalWidth / 2
+      else
+        totalWidth / @getEl("bars").length
 
     @draggies =
       for el in @getEl("bars")
@@ -74,6 +78,8 @@ class RatioView extends SlideView
 
         draggy.reset x: initialX, y: 0
         draggy
+
+    @snapBars()
 
   onDrag: (draggy, isInitial) ->
     @currentDraggy = draggy
