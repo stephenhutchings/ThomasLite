@@ -1,17 +1,17 @@
 .block-xl.content-lg-fill.content-sm-ver
   .row.content-lg-fill
-    .col-lg-6.col-sm-12.content-lg-ver
+    .col-lg-6.col-sm-12.content-lg-ver.block-ver-sm
       h1.text-lg-right.text-sm-center.fade-in.tight!= title
 
     .col-lg-6.col-sm-12.content-lg-ver
-      for bar in ratio.bars
-        .block-ver-sm
-          .ratio-title.block-ver-sm.text-lg!= bar.title
+      for bar, i in ratio.bars
+        .text-lg.block-ver-sm.slide-up(class="delay-#{i + 1}")
+          .ratio-title.block-ver-sm!= bar.title
           .ratio 
             .ratio-bar-container.block-dk
               .ratio-bar
             .ratio-value 
-              .text-lg.text-right.ratio-value-amount &hellip;
+              .text-right.ratio-value-amount &hellip;
 
 .slide-footer.slide-up
   .slide-footer-prompt!= prompt
