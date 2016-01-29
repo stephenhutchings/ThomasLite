@@ -66,42 +66,55 @@ model:
 
 examples:
   -
+    title: What is the price of each product?
     ratio:
-      increment: 5
-      bars:
-        -
-          title: One Quarter
-          value: 25
-        -
-          title: Three Quarters
-          value: 75
-
-  -
-    title: How many rooms does the house have?
-    ratio:
-      suffix: " rooms"
-      total: 8
+      increment: 1
+      prefix: "$5."
+      suffix: "0"
+      total: 9
       independent: true
       bars:
         -
-          title: Bedrooms
-          value: 4
+          title: Product A
+          value: 7
         -
-          title: Bathrooms
+          title: Product B
           value: 2
         -
-          title: Kitchens
-          value: 1
-        -
-          title: Studies
-          value: 1
+          title: Product A
+          value: 5
+
+    answer:
+      text: >
+        Ratio can be used to ask the same number question for several
+        different items at once.
 
   -
-    title: How many planets are there?
+    title: What are the reported satisfaction levels for users of Product Z?
     ratio:
-      suffix: ""
-      total: 10
+      independent: true
+      increment: 20
       bars:
         -
-          title: Planets
-          value: 8
+          title: Satisfaction levels
+          value: 80
+
+    answer:
+      text: Ratio can be used to ask a basic number question.
+  -
+    title: "When making Product B, what ratio of milk to water should you use?"
+    ratio:
+      suffix: "ml"
+      total: 30
+      increment: 10
+      bars:
+        -
+          title: Milk
+          value: 20
+        -
+          title: Water
+          value: 10
+    answer:
+      text: >
+        You can use Ratio to ask questions about the ratio of one value in
+        relation to another.
